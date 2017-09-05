@@ -1,0 +1,11 @@
+inside¡ª¡ªA2
+w 64px
+h 96px
+
+!Switch1
+w 32px
+h 32px
+
+People4
+w 32px
+h 32px
