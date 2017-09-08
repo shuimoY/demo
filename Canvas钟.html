@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas width="400" height="600" id='canvas' style="margin:10px 500px"></canvas>
+	<script type="text/javascript">
+		var canvas=document.getElementById('canvas');
+		var myc=canvas.getContext('2d');
+	
+
+		function draw(){
+			var x=200;
+			var y=200;
+			var r=150;
+			var time=new Date();
+			var hour=time.getHours();
+			var min=time.getMinutes();
+			var sec=time.getSeconds();
+
+			var _hour=(hour*30+min/2-90)*Math.PI/180;
+			var _min=(min*6-90)*Math.PI/180;
+			var _sec=(sec*6-90)*Math.PI/180;
+
+			myc.save();
+			myc.save();
+			myc.save();
+			myc.save();
+			myc.clearRect(0,0,canvas.width,canvas.height);
+
+
+
+			myc.beginPath();
+			for(var i=0;i<60;i++){
+				myc.moveTo(x,y);
+				myc.arc(x,y,r,i*6*Math.PI/180,(i+1)*6*Math.PI/180,false);
+			}
+			myc.closePath();
+			myc.stroke();
+
+			myc.fillStyle='white';
+			myc.beginPath();
+			myc.moveTo(x,y);
+			myc.arc(x,y,r*0.95,0,2*Math.PI,false);
+			myc.closePath();
+			myc.fill();
+
+			myc.beginPath();
+			for(var i=0;i<12;i++){
+				myc.moveTo(x,y);
+				myc.arc(x,y,r,i*30*Math.PI/180,(i+1)*30*Math.PI/180,false);
+			}
+			myc.closePath();
+			myc.strokeStyle='#EE6A50';
+			myc.lineWidth=3;
+			myc.stroke();
+			myc.restore();
+
+			myc.beginPath();
+			myc.moveTo(x,y);
+			myc.arc(x,y,r*0.9,0,2*Math.PI,false);
+			myc.closePath();
+			myc.fillStyle='white';
+			myc.fill();
+
+			myc.beginPath();
+			myc.moveTo(x,y);
+			myc.arc(x,y,r*0.5,_hour,_hour,false);
+			myc.closePath();
+			myc.lineWidth=5;
+			myc.strokeStyle='#EE1289'
+			myc.stroke();
+			myc.restore();
+ 
+ 			myc.beginPath();
+			myc.moveTo(x,y);
+			myc.arc(x,y,r*0.7,_min,_min,false);
+			myc.closePath();
+			myc.strokeStyle='#B9D3EE'
+			myc.lineWidth=3;
+			myc.stroke();
+			myc.restore();
+
+			myc.beginPath();
+			myc.moveTo(x,y);
+			myc.arc(x,y,r*0.9,_sec,_sec,false);
+			myc.closePath();
+			myc.strokeStyle='#6B6B6B'
+			myc.lineWidth=1;
+			myc.stroke();
+			myc.restore();
+
+			myc.beginPath();
+			myc.arc(200,200,10,0,2*Math.PI,false);
+			myc.closePath();
+			myc.fillStyle='#CCCCCC';
+			myc.fill();
+
+		}
+		setInterval(draw,1000);
+		draw();
+	</script>
+</body>
+</html>
